@@ -1,6 +1,6 @@
 const SituacaoPagamentoEnum = {
     ABERTO: "Aberto",
-    PAGO: "PAGO",
+    PAGO: "Pago",
     ATRASADO: "Atrasado"
 }
 
