@@ -79,6 +79,7 @@ router.post('/chatbot/conversation', chatbotController.postConversation);
 
 // Rotas para imagens
 router.get('/imagem/:id', imagemController.obterImagemPorId);
+router.post('/imagem', imagemController.salvarImagem);
 router.delete('/imagem/:id', imagemController.excluirImagem);
 
 module.exports = router;

@@ -33,7 +33,25 @@ const excluirImagem = async (req, res) => {
     }
 };
 
+// Controller para salvar uma imagem
+const salvarImagem = async (req, res) => {
+    const { imagem } = req.body;
+    try {
+        const image = await service.create({ imagem });
+        if (image) {
+            return res.status(201).json({
+                message: 'Imagem criada com sucesso.',
+                id: image.id
+            });
+        }
+        throw new Error('Erro ao criar imagem.');
+    } catch (error) {
+        res.status(500).json({ message: 'Erro ao criar salvar imagem.', error: error.message });
+    }
+};
+
 module.exports = {
     obterImagemPorId,
+    salvarImagem,
     excluirImagem
 };
