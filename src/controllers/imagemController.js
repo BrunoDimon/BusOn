@@ -9,10 +9,23 @@ const obterImagemPorId = async (req, res) => {
         const { id } = req.params;
 
         const imagem = await service.get(id);
-        if (imagem) {
-            return res.status(200).json(imagem);
+
+        if (!imagem) {
+            throw new Error('Imagem não encontrada ou formato inválido.');
         }
-        throw new Error('Imagem não encontrada.');
+
+        const imageData = imagem.imagem;
+        // Decode the base64 string to a buffer
+        const imageBuffer = Buffer.from(imageData, 'base64');
+
+        // Determine the image MIME type (optional: based on your application requirements)
+        // const mimeType = base64Data.match(/^data:(image\/\w+);base64,/);
+        // const contentType = mimeType ? mimeType[1] : 'image/png';
+
+        // // Set the appropriate content-type header for the image
+        res.setHeader('Content-Type', 'image/png');
+
+        res.send(imageBuffer);
     } catch (error) {
         return res.status(500).json({ message: 'Erro ao obter imagem', error: error.message });
     }
