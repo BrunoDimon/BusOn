@@ -10,6 +10,7 @@ const pagamentoController = require('../controllers/pagamentoController');
 const parametroController = require('../controllers/parametroController');
 const pixApiController = require('../controllers/pixApiController');
 const chatbotController = require('../controllers/chatbotController');
+const imagemController = require('../controllers/imagemController');
 const { validarAutenticacao } = require('../middleware/autenticacao.middleware');
 
 // Rotas para cadastro de usuário
@@ -75,5 +76,9 @@ router.delete('/pixapi/:id', pixApiController.excluirPixApi);
 // Rotas para chatbot
 router.get('/chatbot/completion', chatbotController.getChatbotResponse);
 router.post('/chatbot/conversation', chatbotController.postConversation);
+
+// Rotas para imagens
+router.get('/imagem/:id', imagemController.obterImagemPorId);
+router.delete('/imagem/:id', imagemController.excluirImagem);
 
 module.exports = router;
