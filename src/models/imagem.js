@@ -4,7 +4,7 @@ const sequelize = require('../../databaseConnection');
 
 const Imagem = sequelize.define('imagem', {
     imagem: {
-        type: DataTypes.BLOB,
+        type: DataTypes.BLOB('long'),
         allowNull: true
     }
 })
