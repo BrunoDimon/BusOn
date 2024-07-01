@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon server.js",
-    "prod": "node server.js"
+    "prod": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "swagger": "node config/swagger.js",
     "docker": "docker compose -f docker-compose.yml up -d",
